@@ -1,0 +1,2 @@
+// delete doc in school coll
+db.school.deleteMany({"name": "Holberton school"})
