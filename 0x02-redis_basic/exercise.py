@@ -18,4 +18,17 @@ class Cache:
         self._redis.set(r_key, data)
         return r_key
 
+def get(self, key: str,
+            fn: Callable = None) -> Union[str, bytes, int, float]:
+        """ get data from cache using  key """
+        if fn:
+            return fn(self._redis.get(key))
+        return self._redis.get(key)
 
+    def get_str(self, key: str) -> str:
+        """ get string from cache using key."""
+        return str(self._redis.get(key))
+
+    def get_int(self, key: str) -> int:
+        """ Get int from cache using key."""
+        return int(self._redis.get(key))
